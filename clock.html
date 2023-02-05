@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+      <style>
+            html {
+                  background-color: #000;
+                  font-family: 'Roboto', sans-serif;
+            }
+
+            body {
+                  width: 100vh;
+                  height: 100vh;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin: 0 auto;
+                  position: relative;
+            }
+
+            .container {
+                  width: 100%;
+                  height: 100%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+            }
+
+            h1 {
+                  font-size: 300px;
+                  color: #fff;
+                  margin: 0 20px;
+            }
+
+            button {
+                  font-size: 25px;
+                  position: absolute;
+                  bottom: 100px;
+                  padding: 20px 40px;
+                  color: #fff;
+                  background-color: #000;
+                  cursor: pointer;
+                  transition: all .3s ease;
+            }
+
+            button::before,
+            button::after {
+                  content: '';
+                  position: absolute;
+                  width: 100%;
+                  height: 100%;
+                  background-color: transparent;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  transition: all .3s ease;
+                  border: 1px solid #fff;
+            }
+
+            button:hover::after {
+                  height: 150%;
+                  width: 140%;
+            }
+
+            button:hover::before {
+                  height: 170%;
+                  width: 130%;
+            }
+      </style>
+
+</head>
+
+<body>
+      <div class="container" id="main">
+            <h1 id="hour">00</h1>
+            <h1 class="dot"> : </h1>
+            <h1 id="minute">00</h1>
+            <h1 class="dot"> : </h1>
+            <h1 id="second">00</h1>
+      </div>
+      <button onclick="openFullscreen()">Full Screen</button>
+      <script>
+
+            var elem = document.getElementById('main');
+
+            var hh = document.getElementById('hour')
+            var mm = document.getElementById('minute')
+            var ss = document.getElementById('second')
+
+            function padWithLeadingZeros(num, totalLength) {
+                  return String(num).padStart(totalLength, '0');
+            }
+
+            // hh.innerHTML = padWithLeadingZeros(currentdate.getHours(), 2);
+            // mm.innerHTML = padWithLeadingZeros(currentdate.getMinutes(), 2);
+            // ss.innerHTML = padWithLeadingZeros(currentdate.getSeconds(), 2);
+            function openFullscreen() {
+                  if (elem.requestFullscreen) {
+                        elem.requestFullscreen();
+                  } else if (elem.webkitRequestFullscreen) { /* Safari */
+                        elem.webkitRequestFullscreen();
+                  } else if (elem.msRequestFullscreen) { /* IE11 */
+                        elem.msRequestFullscreen();
+                  }
+            }
+            setInterval(() => {
+                  var currentdate = new Date();
+                  hh.textContent = padWithLeadingZeros(currentdate.getHours(), 2);
+                  mm.innerHTML = padWithLeadingZeros(currentdate.getMinutes(), 2);
+                  ss.textContent = padWithLeadingZeros(currentdate.getSeconds(), 2);
+            }, 1000)
+      </script>
+</body>
+
+</html>

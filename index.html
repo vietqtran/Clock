@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>Clock</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
@@ -20,53 +20,54 @@
       height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       margin: 0 auto;
     }
 
-    .container {
-      width: 100%;
-      height: 100%;
+    a {
+      text-decoration: none;
+      transition: all .3s ease-in;
+      color: #fff;
+      text-align: center;
+      font-size: 50px;
+      padding: 40%;
+    }
+
+    .block {
+      width: 50%;
+      height: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      border: 1px solid #fff;
+      transition: all .3s ease-in;
     }
 
-    h1 {
-      font-size: 200px;
-      color: #fff;
+    .block:hover {
+      background-color: #fff;
+    }
+
+    .block:hover a {
+      color: #000;
     }
   </style>
 
 </head>
 
 <body>
-  <div class="container">
-    <h1 id="hour">00</h1>
-    <h1 class="dot">:</h1>
-    <h1 id="minute">00</h1>
-    <h1 class="dot">:</h1>
-    <h1 id="second">00</h1>
+
+  <div class="block counting">
+    <a href="./counting.html">
+      Counting
+    </a>
+  </div>
+  <div class="clock block">
+    <a href="./clock.html">
+      Clock
+    </a>
   </div>
   <script>
-    var currentdate = new Date();
-    var hh = document.getElementById('hour')
-    var mm = document.getElementById('minute')
-    var ss = document.getElementById('second')
 
-    function padWithLeadingZeros(num, totalLength) {
-      return String(num).padStart(totalLength, '0');
-    }
-
-    hh.innerHTML = padWithLeadingZeros(currentdate.getHours(), 2);
-    mm.innerHTML = padWithLeadingZeros(currentdate.getMinutes(), 2);
-    ss.innerHTML = padWithLeadingZeros(currentdate.getSeconds(), 2);
-
-    setInterval(() => {
-      hh.innerHTML = padWithLeadingZeros(currentdate.getHours(), 2);
-      mm.innerHTML = padWithLeadingZeros(currentdate.getMinutes(), 2);
-      ss.innerHTML = padWithLeadingZeros(currentdate.getSeconds(), 2);
-    }, 1000)
   </script>
 </body>
 

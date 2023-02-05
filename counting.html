@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Counting time</title>
+      <style>
+            html {
+                  background-color: #000;
+                  font-family: 'Roboto', sans-serif;
+            }
+
+            body {
+                  width: 100vh;
+                  height: 100vh;
+                  margin: 0 auto;
+            }
+
+            h1 {
+                  font-size: 200px;
+                  color: #fff;
+            }
+
+            .set {
+                  width: 100%;
+                  height: 20%;
+            }
+
+            .main {
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  margin: 0 auto;
+                  width: 100%;
+                  height: 50%;
+            }
+
+            .set,
+            .do {
+                  width: 100%;
+                  height: 25%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+            }
+
+            button {
+                  border-radius: 20px;
+                  margin: 0 30px;
+                  padding: 15px 40px;
+                  font-size: 20px;
+                  color: #000;
+                  background-color: #fff;
+                  border: 1px solid #fff;
+                  transition: .2s linear;
+            }
+
+            button:hover {
+                  color: #fff;
+                  background-color: #000;
+                  cursor: pointer;
+            }
+      </style>
+</head>
+
+<body>
+      <div class="set">
+            <button onclick="reset()" id="reset">Reset</button>
+      </div>
+      <div class="main">
+            <h1 id="hour">00</h1>
+            <h1 class="dot"> : </h1>
+            <h1 id="minute">00</h1>
+            <h1 class="dot"> : </h1>
+            <h1 id="second">00</h1>
+            <h1 class="dot"> : </h1>
+            <h1 id="decisecond">00</h1>
+      </div>
+      <div class="do">
+            <button onclick="start()" id="start">Run</button>
+            <button id="end">Stop</button>
+      </div>
+
+      <script>
+            var h = document.getElementById('hour');
+            var m = document.getElementById('minute');
+            var s = document.getElementById('second');
+            var d = document.getElementById('decisecond');
+            var btnStart = document.getElementById('start')
+            var btnEnd = document.getElementById('end')
+            var btnResume = document.getElementById('resume')
+
+            function padWithLeadingZeros(num, totalLength) {
+                  return String(num).padStart(totalLength, '0');
+            }
+
+            function todo() {
+                  count++
+                  if (count == 99) {
+                        ss++
+                        count = 0
+                  }
+                  if (ss / 60 == 1) {
+                        mm++
+                        ss = 0
+                  }
+                  if (mm / 60 == 1) {
+                        hh++
+                        mm = 0
+                  }
+                  h.innerHTML = padWithLeadingZeros(hh, 2)
+                  m.innerHTML = padWithLeadingZeros(mm, 2)
+                  s.innerHTML = padWithLeadingZeros(ss, 2)
+                  d.innerHTML = padWithLeadingZeros(count, 2)
+            }
+
+            var count = 0;
+            var hh = 0, mm = 0, ss = 0;
+            var check = true;
+            var a
+            function start() {
+                  btnEnd.addEventListener('click', () => {
+                        clearInterval(a)
+                        check = true
+                  })
+                  if (check == true) {
+                        check = false
+                        a = setInterval(todo, 10)
+                  }
+            }
+
+            function reset() {
+                  clearInterval(todo)
+                  h.innerHTML = padWithLeadingZeros(0, 2)
+                  m.innerHTML = padWithLeadingZeros(0, 2)
+                  s.innerHTML = padWithLeadingZeros(0, 2)
+                  d.innerHTML = padWithLeadingZeros(0, 2)
+            }
+
+      </script>
+</body>
+
+</html>
