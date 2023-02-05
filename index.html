@@ -8,15 +8,27 @@
   <title>Clock</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./mobile.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <style>
+    @media screen and (max-width: 600px) {
+      body {
+        width: auto;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: space-between
+      }
+
+
+    }
+
     html {
       background-color: #000;
       font-family: 'Roboto', sans-serif;
     }
 
     body {
-      width: 100vh;
+      width: 100%;
       height: 100vh;
       display: flex;
       align-items: center;
@@ -34,13 +46,14 @@
     }
 
     .block {
-      width: 50%;
-      height: 50%;
       display: flex;
+      width: 50%;
+      height: 100%;
       align-items: center;
       justify-content: center;
       border: 1px solid #fff;
       transition: all .3s ease-in;
+      flex: 1;
     }
 
     .block:hover {

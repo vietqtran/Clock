@@ -5,10 +5,11 @@
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
+      <title>Current Time</title>
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="./mobile.css">
       <style>
             html {
                   background-color: #000;
@@ -85,7 +86,7 @@
             <h1 class="dot"> : </h1>
             <h1 id="second">00</h1>
       </div>
-      <button onclick="openFullscreen()">Full Screen</button>
+      <button id="btnFull" onclick="openFullscreen()">Full Screen</button>
       <script>
 
             var elem = document.getElementById('main');

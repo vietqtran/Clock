@@ -5,6 +5,7 @@
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="./mobile.css">
       <title>Counting time</title>
       <style>
             html {
@@ -13,7 +14,7 @@
             }
 
             body {
-                  width: 100vh;
+                  width: auto;
                   height: 100vh;
                   margin: 0 auto;
             }
@@ -67,7 +68,7 @@
 
 <body>
       <div class="set">
-            <button onclick="reset()" id="reset">Reset</button>
+            <button id="reset">Reset</button>
       </div>
       <div class="main">
             <h1 id="hour">00</h1>
@@ -90,7 +91,7 @@
             var d = document.getElementById('decisecond');
             var btnStart = document.getElementById('start')
             var btnEnd = document.getElementById('end')
-            var btnResume = document.getElementById('resume')
+            var btnReset = document.getElementById('reset')
 
             function padWithLeadingZeros(num, totalLength) {
                   return String(num).padStart(totalLength, '0');
@@ -131,12 +132,15 @@
                   }
             }
 
+            btnReset.addEventListener('click', reset)
+
             function reset() {
-                  clearInterval(todo)
+                  clearInterval(a)
                   h.innerHTML = padWithLeadingZeros(0, 2)
                   m.innerHTML = padWithLeadingZeros(0, 2)
                   s.innerHTML = padWithLeadingZeros(0, 2)
                   d.innerHTML = padWithLeadingZeros(0, 2)
+                  check = true
             }
 
       </script>
